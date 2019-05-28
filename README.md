@@ -50,6 +50,38 @@ application up and running.
 * **MOUNT** `/api/v1/cable`
   * opens web socket connection
 
+#### Example fetch to test
+
+You can run these calls from the browser console to test the websocket connection from the frontend. Make sure you've subscribed to the channel using user_id for chat post and chat_id for message post.
+
+```javascript
+const token = localStorage.getItem("token");
+fetch("http://localhost:3000/api/v1/chats", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    Authorization: token
+  },
+  body: JSON.stringify({
+    title: "Test Chat",
+    users: [1, 2],
+    chat_type_id: 1,
+    admin_id: 1
+  })
+});
+
+fetch("http://localhost:3000/api/v1/messages", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    Authorization: token
+  },
+  body: JSON.stringify({ content: "test", user_id: 1, chat_id: 3 })
+});
+```
+
 #### Websocket Channels
 
 * UserChannel
