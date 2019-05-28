@@ -61,7 +61,7 @@ application up and running.
   * updates anytime a message is sent to chat
   * returns message instance
 
-###Thoughts on scale
+### Thoughts on scale
 
 * Made a serializer for user, this includes all user chats and messages.
 
